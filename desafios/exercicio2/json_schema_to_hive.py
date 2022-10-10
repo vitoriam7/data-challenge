@@ -1,3 +1,8 @@
+import json
+import boto3
+from json2hive.utils import infer_schema
+from json2hive.generators import generate_json_table_statement
+
 _ATHENA_CLIENT = None
 
 def create_hive_table_with_athena(query):
@@ -23,3 +28,15 @@ def handler():
     Utilize a função create_hive_table_with_athena para te auxiliar
         na criação da tabela HIVE, não é necessário alterá-la
     '''
+    f = open('C:/Users/Host/Documents/git/data-challenge/data-challenge/desafios/exercicio2/schema.json')
+    schema_template = json.load(f)
+
+def json_attributes(schema_template):
+
+    schema_template = schema_template
+    column_names = (c for c in schema_template['name'])
+    #column_types = (i for i in schema_template['type'])
+    print(column_names)
+
+        
+

@@ -1,7 +1,8 @@
 import boto3
 from moto import mock_sqs
 
-import exercicio_1.event_validator as event_validator
+# import exercicio1.event_validator as event_validator
+import event_validator as event_validator
 
 @mock_sqs
 def main(event):
@@ -11,9 +12,47 @@ def main(event):
     )
     event_validator._SQS_CLIENT = _SQS_CLIENT
     event_validator.handler(event)
-    
+
+
 if __name__ == "__main__":
-    event = {
+    # event = {
+    #     "eid": "3e628a05-7a4a-4bf3-8770-084c11601a12",
+    #     "documentNumber": "42323235600",
+    #     "name": "Joseph",
+    #     "age": 32,
+    #     "address": {
+    #         "street": "St. Blue",
+    #         "number": 3,
+    #         "mailAddress": True
+    #     }
+    # }
+
+    # event = {
+    #     "eid": "3e628a05-7a4a-4bf3-8770-084c11601a12",
+    #     "documentNumber": "42323235600",
+    #     "name": "Joseph",
+    #     "age": '32',
+    #     "address": {
+    #         "street": "St. Blue",
+    #         "number": 3,
+    #         "mailAddress": True
+    #     }
+    # }
+
+    # event = {
+    #     "eid": "3e628a05-7a4a-4bf3-8770-084c11601a12",
+    #     "documentNumber": "42323235600",
+    #     "name": "Joseph",
+    #     "age": 32,
+    #     "new_field": "XPTO",
+    #     "address": {
+    #         "street": "St. Blue",
+    #         "number": 3,
+    #         "mailAddress": True
+    #     }
+    # }
+
+     event = {
         "eid": "3e628a05-7a4a-4bf3-8770-084c11601a12",
         "documentNumber": "42323235600",
         "name": "Joseph",
@@ -21,7 +60,10 @@ if __name__ == "__main__":
         "address": {
             "street": "St. Blue",
             "number": 3,
-            "mailAddress": True
+            "mailAddress": False,
+            "order": 0
         }
     }
-    main(event)
+
+main(event)
+
